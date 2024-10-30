@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: consumer-ms
+  datasource:
+    url: jdbc:postgresql://postgres:5432/postgres
+    username: postgres
+    password: qwer12345
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  kafka:
+    bootstrap-servers: kafka:9092
+
+server:
+  port: 8081
+
