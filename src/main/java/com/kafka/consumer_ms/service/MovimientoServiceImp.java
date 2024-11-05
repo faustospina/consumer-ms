@@ -13,6 +13,7 @@ import com.kafka.consumer_ms.model.mapper.MovimientoMapper;
 import com.kafka.consumer_ms.repository.CuentaRepository;
 import com.kafka.consumer_ms.repository.MovimientoRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,18 +24,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MovimientoServiceImp implements MovimientoService {
 
     public static final String NOT_FOUND_MOVIMIENTO = "Not found movimiento ";
-    @Autowired
-    private MovimientoRepository movimientoRepository;
 
-    @Autowired
-    private CuentaRepository cuentaRepository;
+    private final MovimientoRepository movimientoRepository;
 
+    private final CuentaRepository cuentaRepository;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
 
     @Autowired

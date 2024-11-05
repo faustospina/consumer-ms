@@ -2,15 +2,17 @@ package com.kafka.consumer_ms.controller;
 
 import com.kafka.consumer_ms.model.dto.CuentaDTO;
 import com.kafka.consumer_ms.service.CuentaService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("cuentas")
 public class CuentaController {
-    @Autowired
-    private CuentaService service;
+
+    private final CuentaService service;
 
     @PostMapping("/cliente/{id}")
     public ResponseEntity<Object> createCuenta(@PathVariable Long id, @RequestBody CuentaDTO request){

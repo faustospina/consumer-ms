@@ -4,9 +4,8 @@ import com.kafka.consumer_ms.model.dto.CuentaReporte;
 import com.kafka.consumer_ms.model.dto.MovimientoReporte;
 import com.kafka.consumer_ms.model.dto.ReporteDTO;
 import com.kafka.consumer_ms.model.entities.Cuenta;
-import com.kafka.consumer_ms.repository.CuentaRepository;
 import com.kafka.consumer_ms.repository.MovimientoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,16 +15,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ReporteServiceImpl implements ReporteService {
-
-    @Autowired
-    private CuentaRepository cuentaRepository;
-
-    @Autowired
-    private MovimientoRepository movimientoRepository;
-
-    @Autowired
-    private CuentaService cuentaService;
+    private final MovimientoRepository movimientoRepository;
+    private final CuentaService cuentaService;
 
     @Override
     public ResponseEntity<Object> generarReporte(Long clienteId, LocalDate fechaInicio, LocalDate fechaFin) {

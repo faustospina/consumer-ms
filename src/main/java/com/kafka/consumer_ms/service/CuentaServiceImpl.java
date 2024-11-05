@@ -9,6 +9,7 @@ import com.kafka.consumer_ms.model.entities.Movimiento;
 import com.kafka.consumer_ms.model.mapper.CuentaMapper;
 import com.kafka.consumer_ms.repository.CuentaRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,20 +18,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CuentaServiceImpl implements CuentaService{
 
     public static final String NOT_FOUND_CUENTA = "Not found cuenta";
-    @Autowired
-    private CuentaRepository cuentaRepository;
 
-    @Autowired
-    private ClienteService clienteService;
+    private final CuentaRepository cuentaRepository;
+    
+    private final ClienteService clienteService;
 
-    @Autowired
-    private MovimientoService movimientoService;
+    private final MovimientoService movimientoService;
 
-    @Autowired
-    private CuentaMapper cuentaMapper;
+    private final CuentaMapper cuentaMapper;
 
     @Override
     public ResponseEntity<Object> createCount(Long idCliente, CuentaDTO cuenta) {

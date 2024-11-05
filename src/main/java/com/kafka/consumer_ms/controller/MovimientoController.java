@@ -2,16 +2,17 @@ package com.kafka.consumer_ms.controller;
 
 import com.kafka.consumer_ms.model.dto.MovimientoDTO;
 import com.kafka.consumer_ms.service.MovimientoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("movimientos")
 public class MovimientoController {
 
-    @Autowired
-    private MovimientoService service;
+    private final MovimientoService service;
 
     @GetMapping
     public ResponseEntity<Object> getAll(){
